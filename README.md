@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e301f215e966335dc6bd/maintainability)](https://codeclimate.com/github/aporia-ai/kubesurvival/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e301f215e966335dc6bd/test_coverage)](https://codeclimate.com/github/aporia-ai/kubesurvival/test_coverage)
 
-KubeSurvival allows you to **significantly reduce your Kubernetes costs** by finding the cheapest machine types that successfully run your workloads.
+KubeSurvival allows you to **significantly reduce your Kubernetes compute costs** by finding the cheapest machine types that can run your workloads successfully.
 
 If you have a multi-tenant environment, ML training jobs, a large number of ML model servers, etc, this tool can help you optimize your K8s compute costs.
 
