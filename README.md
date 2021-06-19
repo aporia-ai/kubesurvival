@@ -4,9 +4,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e301f215e966335dc6bd/maintainability)](https://codeclimate.com/github/aporia-ai/kubesurvival/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e301f215e966335dc6bd/test_coverage)](https://codeclimate.com/github/aporia-ai/kubesurvival/test_coverage)
 
-**Simulate K8s clusters with different node configs to find the cheapest cluster for your workload.**
+KubeSurvival allows you to **significantly reduce your Kubernetes costs** by finding the cheapest machines that successfully run your workloads.
 
-If you have have a multi-tenant environment, ML training jobs, a large number of ML model servers, etc - this tool can help you reduce your K8s compute costs significantly!
+If you have a multi-tenant environment, ML training jobs, a large number of ML model servers, etc, this tool can help you optimize your K8s compute costs.
 
 To easily define workloads, KubeSurvival uses a very simple DSL:
 
