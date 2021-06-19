@@ -12,13 +12,13 @@ To easily define workloads, KubeSurvival uses a very simple DSL:
 
 ```python
   (
-    # A service
+    # Some microservice
     pod(cpu: 1, memory: "1Gi") + 
 
-    # Another service - with 3 replicas
+    # Another microservice - with 3 replicas
     pod(cpu: "500m", memory: "2Gi") * 3 +
 
-    # More services!
+    # More microservices!
     (
       pod(cpu: 1, memory: "1Gi") +
       pod(cpu: "250m", memory: "1Gi")
