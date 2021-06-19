@@ -143,8 +143,9 @@ func (n *AWSNode) GetNodeConfig(nodeName string) *config.NodeConfig {
 		},
 		Status: config.NodeStatus{
 			Allocatable: map[v1.ResourceName]string{
-				"cpu":            fmt.Sprintf("%d", n.VCPU),
-				"memory":         fmt.Sprintf("%dGi", int(n.Memory)),
+				// We always assume free 10% vCPU and memory
+				"cpu":            fmt.Sprintf("%dm", int(float32(n.VCPU)*1000*0.9)),
+				"memory":         fmt.Sprintf("%dM", int(float64(n.Memory)*1024*0.9)),
 				"nvidia.com/gpu": fmt.Sprintf("%d", n.GPU),
 				"pods":           fmt.Sprintf("%d", n.MaxPods),
 			},

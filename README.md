@@ -11,26 +11,26 @@ If you have a multi-tenant environment, ML training jobs, a large number of ML m
 To easily define workloads, KubeSurvival uses a very simple DSL:
 
 ```python
-(
+  (
     # A service
-    pod(cpu: 2, memory: "4Gi") + 
+    pod(cpu: 1, memory: "1Gi") + 
 
     # Another service - with 3 replicas
     pod(cpu: "500m", memory: "2Gi") * 3 +
 
     # More services!
     (
-      pod(cpu: 2, memory: "4Gi") +
+      pod(cpu: 1, memory: "1Gi") +
       pod(cpu: "250m", memory: "1Gi")
     ) * 3
-) * 2  # Production, Staging
+  ) * 2  # Production, Staging
 ```
 
 This will give you a result such as:
 
     Instance type: t3.medium
-    Node count: 17
-    Total Price per Month: USD $526.16
+    Node count: 11
+    Total Price per Month: USD $340.45
 
 ## Installation
 
@@ -55,6 +55,8 @@ See the [examples](examples/) directory for example config files.
 KubeSurvival uses [k8s-cluster-simulator](https://github.com/pfnet-research/k8s-cluster-simulator) to simulate Kubernetes pod scheduling, without running on the actual underlying machines. It iterates over all possible instance types and node counts, simulates a K8s cluster with your workload, and checks if there are any pending pods. 
 
 For each simulation it calculates the on-demand cost per month using the [ec2-instances-info](https://github.com/cristim/ec2-instances-info) library. Additionally, it queries the [eni-max-pods.txt](https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt) file to determine what's the maximum number of pods in each instance type.
+
+When simulating a cluster, KubeSurvival always makes sure you have 10% free CPU and Memory on each node.
 
 Finally, KubeSurvival selects the cheapest configuration without pending pods.
 
