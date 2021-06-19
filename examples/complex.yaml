@@ -1,0 +1,45 @@
+nodes:
+  aws:
+    region: us-east-1
+    instanceTypes:
+    - p4d.24xlarge
+    - p3.2xlarge
+    - p3.8xlarge	
+    - p3.16xlarge
+    - p3dn.24xlarge
+    - g4dn.8xlarge
+    - g4dn.16xlarge	
+    - g4dn.12xlarge
+    - g4dn.16xlarge	
+    - g4dn.12xlarge	
+pods: |
+  # Global microservice 1
+  pod(cpu: "250m", memory: "64Gi", gpu: 2) +
+
+  # Global microservice 2
+  pod(cpu: "2500m", memory: "31Gi", gpu: 2) +
+
+  # Global microservice 3
+  pod(cpu: "350m", memory: "32Gi", gpu: 3) +
+
+  # Environment-specific microservices
+  # We have 3 environments
+  (
+    # Environment microservice 1
+    pod(cpu: "550m", memory: "64Gi", gpu: 3) +
+
+    # Environment microservice 2 (with 3 replicas)
+    pod(cpu: "650m", memory: "32Gi", gpu: 2) * 3 +
+
+    # Environment microservice 3
+    pod(cpu: "750m", memory: "64Gi", gpu: 3) +
+
+    # In each environment, there are 60 instances of something with pod with 32 replicas + another pod
+    (
+      32 * pod(cpu: "2200m", memory: "6Gi", gpu: 3) + 
+      pod(cpu: "100m", memory: "10Gi", gpu: 5)
+    ) * 6
+  ) * 3 + 
+
+  # Global microservice 4
+  pod(cpu: "2550m", memory: "64Gi", gpu: 1)

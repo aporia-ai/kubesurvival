@@ -1,0 +1,17 @@
+name: Coverage with CodeClimate
+on: [push, pull_request]
+jobs:
+  codeclimate-report:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '1.16'
+    - run: go build
+    - uses: paambaati/codeclimate-action@v2.7.5
+      env:
+        CC_TEST_REPORTER_ID: 7a127695ca264aa18606fe89a19f04f72a04e2d7f7cb9dce9a2ef6c89ddfec27
+      with:
+        coverageCommand: go test ./... -coverprofile c.out
+        prefix: github.com/aporia-ai/kubesurvival/v2

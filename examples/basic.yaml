@@ -1,0 +1,11 @@
+nodes:
+  aws:
+    region: us-east-1
+    instanceTypes:
+    - m5.large
+    - m5.xlarge
+    - t3.medium
+    - t3.large
+pods: |
+  pod(cpu: 2, memory: "4Gi") + 
+  pod(cpu: "500m", memory: "2Gi") * 3
