@@ -31,6 +31,8 @@ This will give you a result such as:
     Instance type: t3.medium
     Node count: 11
     Total Price per Month: USD $340.45
+    
+<p align="center">Made with :heart: by <a href="https://www.aporia.com?utm_source=github&utm_medium=github&utm_campaign=kubesurvival" target="_blank">Aporia</a></p>
 
 ## Installation
 
